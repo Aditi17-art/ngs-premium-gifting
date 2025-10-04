@@ -21,6 +21,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "emailjs-com";
 
+// Contact Information
 const contactInfo = [
   {
     icon: MapPin,
@@ -50,6 +51,7 @@ const contactInfo = [
   },
 ];
 
+// Inquiry Types
 const inquiryTypes = [
   "General Inquiry",
   "Product Information",
@@ -60,12 +62,24 @@ const inquiryTypes = [
   "Partnership Opportunity",
 ];
 
+// Product Interest Options
+const productInterests = [
+  "Cakes & Chocolates",
+  "Flowers & Bouquets",
+  "Personalized Gifts",
+  "Festival Hampers",
+  "Premium Accessories",
+  "Other",
+];
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    company: "",
     inquiryType: "",
+    productInterest: "",
     subject: "",
     message: "",
   });
@@ -81,18 +95,20 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        "service_dfrjgvs", // Service ID
-        "template_xxxxx", // Template ID (change this)
+        "service_dfrjgvs", // ✅ Replace with your EmailJS Service ID
+        "template_dvveowk", // ✅ Replace with your EmailJS Template ID
         {
           to_name: "NGS Mart",
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone.trim() || "not filled",
+          company: formData.company.trim() || "not filled",
           inquiryType: formData.inquiryType || "not filled",
+          productInterest: formData.productInterest || "not filled",
           subject: formData.subject.trim() || "not filled",
           message: formData.message.trim() || "not filled",
         },
-        "PnKD0Lf4TomvWmp7_" // Public key
+        "PnKD0Lf4TomvWmp7_" // ✅ Replace with your EmailJS Public Key
       );
 
       toast({
@@ -106,7 +122,9 @@ export default function Contact() {
         name: "",
         email: "",
         phone: "",
+        company: "",
         inquiryType: "",
+        productInterest: "",
         subject: "",
         message: "",
       });
@@ -135,10 +153,30 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Information */}
-      {/* ---- (baaki code aapka same hi rahega) ---- */}
+      {/* Contact Information Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {contactInfo.map((info, idx) => (
+            <Card
+              key={idx}
+              className="shadow-premium border-0 text-center hover:shadow-xl transition">
+              <CardHeader>
+                <info.icon className="mx-auto h-10 w-10 text-industrial" />
+                <CardTitle className="mt-4 text-xl">{info.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {info.details.map((detail, i) => (
+                  <p key={i} className="text-gray-600">
+                    {detail}
+                  </p>
+                ))}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-      {/* Contact Form */}
+      {/* Contact Form Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <Card className="shadow-premium border-0">
@@ -152,7 +190,117 @@ export default function Contact() {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* ---- form fields same as pehle ---- */}
+                {/* Name */}
+                <div>
+                  <Label>Name</Label>
+                  <Input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    required
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <Label>Email</Label>
+                  <Input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    required
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <Label>Phone</Label>
+                  <Input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                  />
+                </div>
+
+                {/* Company */}
+                <div>
+                  <Label>Company</Label>
+                  <Input
+                    type="text"
+                    value={formData.company}
+                    onChange={(e) =>
+                      handleInputChange("company", e.target.value)
+                    }
+                  />
+                </div>
+
+                {/* Inquiry Type */}
+                <div>
+                  <Label>Inquiry Type</Label>
+                  <Select
+                    onValueChange={(val) =>
+                      handleInputChange("inquiryType", val)
+                    }
+                    value={formData.inquiryType}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select an option" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {inquiryTypes.map((type, i) => (
+                        <SelectItem key={i} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Product Interest */}
+                <div>
+                  <Label>Product Interest</Label>
+                  <Select
+                    onValueChange={(val) =>
+                      handleInputChange("productInterest", val)
+                    }
+                    value={formData.productInterest}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a product" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {productInterests.map((item, i) => (
+                        <SelectItem key={i} value={item}>
+                          {item}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Subject */}
+                <div>
+                  <Label>Subject</Label>
+                  <Input
+                    type="text"
+                    value={formData.subject}
+                    onChange={(e) =>
+                      handleInputChange("subject", e.target.value)
+                    }
+                  />
+                </div>
+
+                {/* Message */}
+                <div>
+                  <Label>Message</Label>
+                  <Textarea
+                    value={formData.message}
+                    onChange={(e) =>
+                      handleInputChange("message", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   variant="premium"
