@@ -128,122 +128,8 @@ export default function PreBooking() {
 
   return (
     <div className="min-h-screen pt-24">
-      {/* Header */}
-      <section className="py-20 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
-          <Badge className="mb-6 bg-secondary text-secondary-foreground animate-pulse text-lg px-4 py-2">
-            Pre-Booking Open: 12 Sep - 18 Oct 2025
-          </Badge>
-
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
-            Secure Your Festive Gifts Early
-          </h1>
-
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-up">
-            Don't wait for the festival rush! Pre-book your premium gift packs
-            now and enjoy guaranteed availability with exclusive benefits.
-          </p>
-        </div>
-      </section>
-
-      {/* Pre-Booking Timeline */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-primary mb-12">
-              Pre-Booking Timeline
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="text-center hover-lift bg-gradient-card border-0">
-                <CardHeader>
-                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Calendar className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-industrial">
-                    Pre-Booking Period
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Badge className="mb-4 bg-secondary text-secondary-foreground">
-                    12 Sep - 18 Oct 2025
-                  </Badge>
-                  <CardDescription>
-                    Submit your pre-booking requests during this period to
-                    secure your orders
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center hover-lift bg-gradient-card border-0">
-                <CardHeader>
-                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Clock className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-industrial">
-                    Processing Time
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Badge className="mb-4 bg-accent text-accent-foreground">
-                    19 Oct - 5 Nov 2025
-                  </Badge>
-                  <CardDescription>
-                    Order confirmation, payment processing, and preparation
-                    begins
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center hover-lift bg-gradient-card border-0">
-                <CardHeader>
-                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Gift className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-industrial">
-                    Delivery Period
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Badge className="mb-4 bg-primary text-primary-foreground">
-                    6 Nov - 15 Nov 2025
-                  </Badge>
-                  <CardDescription>
-                    Fresh products prepared and delivered right before the
-                    festival season
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-primary mb-12">
-              Pre-Booking Benefits
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {preBookingBenefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-3 animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms` }}>
-                  <CheckCircle className="h-6 w-6 text-secondary flex-shrink-0" />
-                  <span className="text-lg">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pre-Booking Form */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Card className="shadow-premium border-0">
@@ -406,6 +292,120 @@ export default function PreBooking() {
                 </form>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Header */}
+      <section className="py-20 bg-gradient-hero text-white">
+        <div className="container mx-auto px-4 text-center">
+          <Badge className="mb-6 bg-secondary text-secondary-foreground animate-pulse text-lg px-4 py-2">
+            Pre-Booking Open: 12 Sep - 18 Oct 2025
+          </Badge>
+
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
+            Secure Your Festive Gifts Early
+          </h1>
+
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-up">
+            Don't wait for the festival rush! Pre-book your premium gift packs
+            now and enjoy guaranteed availability with exclusive benefits.
+          </p>
+        </div>
+      </section>
+
+      {/* Pre-Booking Timeline */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-primary mb-12">
+              Pre-Booking Timeline
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="text-center hover-lift bg-gradient-card border-0">
+                <CardHeader>
+                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calendar className="h-8 w-8 text-primary-foreground" />
+                  </div>
+                  <CardTitle className="text-industrial">
+                    Pre-Booking Period
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Badge className="mb-4 bg-secondary text-secondary-foreground">
+                    12 Sep - 18 Oct 2025
+                  </Badge>
+                  <CardDescription>
+                    Submit your pre-booking requests during this period to
+                    secure your orders
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-lift bg-gradient-card border-0">
+                <CardHeader>
+                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Clock className="h-8 w-8 text-primary-foreground" />
+                  </div>
+                  <CardTitle className="text-industrial">
+                    Processing Time
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Badge className="mb-4 bg-accent text-accent-foreground">
+                    19 Oct - 5 Nov 2025
+                  </Badge>
+                  <CardDescription>
+                    Order confirmation, payment processing, and preparation
+                    begins
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-lift bg-gradient-card border-0">
+                <CardHeader>
+                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Gift className="h-8 w-8 text-primary-foreground" />
+                  </div>
+                  <CardTitle className="text-industrial">
+                    Delivery Period
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Badge className="mb-4 bg-primary text-primary-foreground">
+                    6 Nov - 15 Nov 2025
+                  </Badge>
+                  <CardDescription>
+                    Fresh products prepared and delivered right before the
+                    festival season
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-primary mb-12">
+              Pre-Booking Benefits
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {preBookingBenefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex items-center space-x-3 animate-fade-up"
+                  style={{ animationDelay: `${index * 100}ms` }}>
+                  <CheckCircle className="h-6 w-6 text-secondary flex-shrink-0" />
+                  <span className="text-lg">{benefit}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
