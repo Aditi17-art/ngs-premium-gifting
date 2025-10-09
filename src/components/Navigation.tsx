@@ -40,9 +40,6 @@ export const Navigation = () => {
               <span>Ngshelpdeskv9@gmail.com</span>
             </div>
           </div>
-          <div className="text-secondary font-semibold animate-pulse">
-            Pre-Booking: 12 Sep - 18 Oct 2025
-          </div>
         </div>
       </div>
 
@@ -59,7 +56,9 @@ export const Navigation = () => {
               />
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold text-primary">NGS MART</h1>
-                <p className="text-xs text-muted-foreground">Pick n Pay. Inspired by You</p>
+                <p className="text-xs text-muted-foreground">
+                  Pick n Pay. Inspired by You
+                </p>
               </div>
             </Link>
 
@@ -69,8 +68,7 @@ export const Navigation = () => {
                 to="/"
                 className={`font-medium transition-colors hover:text-primary ${
                   isActive("/") ? "text-primary" : "text-foreground"
-                }`}
-              >
+                }`}>
                 Home
               </Link>
 
@@ -78,16 +76,16 @@ export const Navigation = () => {
                 to="/about"
                 className={`font-medium transition-colors hover:text-primary ${
                   isActive("/about") ? "text-primary" : "text-foreground"
-                }`}
-              >
+                }`}>
                 About Us
               </Link>
 
               {/* Products Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className={`flex items-center gap-1 font-medium transition-colors hover:text-primary ${
-                  isProductsActive() ? "text-primary" : "text-foreground"
-                }`}>
+                <DropdownMenuTrigger
+                  className={`flex items-center gap-1 font-medium transition-colors hover:text-primary ${
+                    isProductsActive() ? "text-primary" : "text-foreground"
+                  }`}>
                   Products <ChevronDown className="h-4 w-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 bg-background border-border shadow-lg">
@@ -95,8 +93,7 @@ export const Navigation = () => {
                     <DropdownMenuItem key={category.path}>
                       <Link
                         to={category.path}
-                        className="w-full hover:text-primary transition-colors"
-                      >
+                        className="w-full hover:text-primary transition-colors">
                         {category.name}
                       </Link>
                     </DropdownMenuItem>
@@ -107,9 +104,10 @@ export const Navigation = () => {
               <Link
                 to="/corporate-orders"
                 className={`font-medium transition-colors hover:text-primary ${
-                  isActive("/corporate-orders") ? "text-primary" : "text-foreground"
-                }`}
-              >
+                  isActive("/corporate-orders")
+                    ? "text-primary"
+                    : "text-foreground"
+                }`}>
                 Corporate Orders
               </Link>
 
@@ -117,8 +115,7 @@ export const Navigation = () => {
                 to="/pre-booking"
                 className={`font-medium transition-colors hover:text-primary ${
                   isActive("/pre-booking") ? "text-primary" : "text-foreground"
-                }`}
-              >
+                }`}>
                 Pre-Booking
               </Link>
 
@@ -126,8 +123,7 @@ export const Navigation = () => {
                 to="/contact"
                 className={`font-medium transition-colors hover:text-primary ${
                   isActive("/contact") ? "text-primary" : "text-foreground"
-                }`}
-              >
+                }`}>
                 Contact Us
               </Link>
             </div>
@@ -151,18 +147,16 @@ export const Navigation = () => {
                   <Link
                     to="/"
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
+                    onClick={() => setIsOpen(false)}>
                     Home
                   </Link>
                   <Link
                     to="/about"
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
+                    onClick={() => setIsOpen(false)}>
                     About Us
                   </Link>
-                  
+
                   <div className="space-y-2">
                     <p className="text-lg font-medium text-primary">Products</p>
                     {productCategories.map((category) => (
@@ -170,8 +164,7 @@ export const Navigation = () => {
                         key={category.path}
                         to={category.path}
                         className="block pl-4 text-base hover:text-primary transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
+                        onClick={() => setIsOpen(false)}>
                         {category.name}
                       </Link>
                     ))}
@@ -180,25 +173,22 @@ export const Navigation = () => {
                   <Link
                     to="/corporate-orders"
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
+                    onClick={() => setIsOpen(false)}>
                     Corporate Orders
                   </Link>
                   <Link
                     to="/pre-booking"
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
+                    onClick={() => setIsOpen(false)}>
                     Pre-Booking
                   </Link>
                   <Link
                     to="/contact"
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
+                    onClick={() => setIsOpen(false)}>
                     Contact Us
                   </Link>
-                  
+
                   <Button variant="premium" size="lg" className="mt-6" asChild>
                     <Link to="/pre-booking" onClick={() => setIsOpen(false)}>
                       Book Now
