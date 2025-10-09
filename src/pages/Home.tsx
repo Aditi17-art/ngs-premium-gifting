@@ -23,6 +23,9 @@ import corporateImage from "@/assets/corporate-gifts.jpg";
 import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
 
+// ✅ Import your PDF file
+import realJuicePDF from "@/assets/NGS REAL JUICEpdf.pdf";
+
 const featuredProducts = [
   {
     id: 1,
@@ -32,6 +35,7 @@ const featuredProducts = [
     image: dryFruitsImage,
     category: "Dry Fruits",
     path: "/products/dry-fruits",
+    isPDF: false,
   },
   {
     id: 2,
@@ -40,7 +44,8 @@ const featuredProducts = [
     price: "₹335",
     image: realJuiceImage,
     category: "Juices",
-    path: "/products/real-juices",
+    path: realJuicePDF, // PDF path here
+    isPDF: true, // Flag to handle PDF opening
   },
   {
     id: 3,
@@ -50,6 +55,7 @@ const featuredProducts = [
     image: corporateImage,
     category: "Corporate",
     path: "/corporate-orders",
+    isPDF: false,
   },
   {
     id: 4,
@@ -59,6 +65,7 @@ const featuredProducts = [
     image: snackPackImage,
     category: "Snacks",
     path: "/products/snack-packs",
+    isPDF: false,
   },
 ];
 
@@ -181,11 +188,21 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <Button variant="hero" className="w-full" asChild>
-                    <Link to={product.path}>
-                      Shop Now <ArrowRight className="ml-2" />
-                    </Link>
-                  </Button>
+                  {/* ✅ Open PDF directly if it's a PDF product */}
+                  {product.isPDF ? (
+                    <Button
+                      variant="hero"
+                      className="w-full"
+                      onClick={() => window.open(product.path, "_blank")}>
+                      View More <ArrowRight className="ml-2" />
+                    </Button>
+                  ) : (
+                    <Button variant="hero" className="w-full" asChild>
+                      <Link to={product.path}>
+                        Shop Now <ArrowRight className="ml-2" />
+                      </Link>
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}
