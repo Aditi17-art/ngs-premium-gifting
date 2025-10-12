@@ -25,6 +25,7 @@ import snackPackImage from "@/assets/snack-pack.jpg";
 
 // ✅ Import your PDF file
 import realJuicePDF from "@/assets/NGS REAL JUICEpdf.pdf";
+import snacksPDF from "@/assets/NGS Snack Factory.pdf";
 
 const featuredProducts = [
   {
@@ -41,7 +42,6 @@ const featuredProducts = [
     id: 2,
     name: "Real Juice Gift Pack",
     description: "Family pack with assorted flavors",
-    price: "₹335",
     image: realJuiceImage,
     category: "Juices",
     path: realJuicePDF, // PDF path here
@@ -51,7 +51,6 @@ const featuredProducts = [
     id: 3,
     name: "Corporate Gift Sets",
     description: "Professional gifting solutions",
-    price: "₹499",
     image: corporateImage,
     category: "Corporate",
     path: "/corporate-orders",
@@ -61,11 +60,10 @@ const featuredProducts = [
     id: 4,
     name: "Snack Factory Pack",
     description: "Premium makhana and snacks combo",
-    price: "₹399",
     image: snackPackImage,
     category: "Snacks",
-    path: "/products/snack-packs",
-    isPDF: false,
+    path: snacksPDF,
+    isPDF: true,
   },
 ];
 
