@@ -23,12 +23,15 @@ import corporateImage from "@/assets/bikano.jpeg";
 import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
 import cremicaImage from "@/assets/cremica.jpeg";
+import haldiramImage from "@/assets/haldiram.png";
+
 // ✅ Import your PDF file
 import realJuicePDF from "@/assets/NGS REAL JUICE.pdf";
 import snacksPDF from "@/assets/NGS Snack Factory.pdf";
 import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
 import bikanoPDF from "@/assets/NGS BIKANO SWEETS.pdf";
 import cremicaPDF from "@/assets/NGS Cremica bisc.pdf";
+import haldiramPDF from "@/assets/NGS HALDIRAM .pdf";
 
 const featuredProducts = [
   {
@@ -74,6 +77,16 @@ const featuredProducts = [
     image: cremicaImage,
     category: "Snacks & Biscuits",
     path: cremicaPDF,
+    isPDF: true,
+  },
+  {
+    id: 6,
+    name: "Haldiram Assorted Snacks Pack",
+    description:
+      "An irresistible selection of Haldiram’s popular namkeens and sweets",
+    image: haldiramImage,
+    category: "Snacks & Sweets",
+    path: haldiramPDF,
     isPDF: true,
   },
 ];
