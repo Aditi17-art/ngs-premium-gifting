@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import corporateImage from "@/assets/corporate-gifts.jpg";
+import corporateImage from "@/assets/bikano.jpeg";
 import emailjs from "emailjs-com";
 
 const corporateBenefits = [

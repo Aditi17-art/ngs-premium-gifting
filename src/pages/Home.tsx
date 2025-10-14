@@ -19,24 +19,25 @@ import {
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/Hero-banner1.jpeg";
 import dryFruitsImage from "@/assets/dry-fruits-hero.jpg";
-import corporateImage from "@/assets/corporate-gifts.jpg";
+import corporateImage from "@/assets/bikano.jpeg";
 import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
 
 // ✅ Import your PDF file
 import realJuicePDF from "@/assets/NGS REAL JUICEpdf.pdf";
 import snacksPDF from "@/assets/NGS Snack Factory.pdf";
+import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
+import bikanoPDF from "@/assetS/Hero-banner1.jpeg";
 
 const featuredProducts = [
   {
     id: 1,
     name: "Premium Dry Fruits Box",
     description: "Finest cashews, almonds, and pistachios",
-    price: "₹750",
     image: dryFruitsImage,
     category: "Dry Fruits",
-    path: "/products/dry-fruits",
-    isPDF: false,
+    path: dryfruitPDF,
+    isPDF: true,
   },
   {
     id: 2,
@@ -52,9 +53,9 @@ const featuredProducts = [
     name: "Corporate Gift Sets",
     description: "Professional gifting solutions",
     image: corporateImage,
-    category: "Corporate",
-    path: "/corporate-orders",
-    isPDF: false,
+    category: "Sweets",
+    path: bikanoPDF,
+    isPDF: true,
   },
   {
     id: 4,
@@ -174,9 +175,7 @@ export default function Home() {
 
                 <CardContent className="pt-0">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-primary">
-                      {product.price}
-                    </span>
+                    <span className="text-2xl font-bold text-primary"></span>
                     <div className="flex items-center text-secondary">
                       <Star className="h-4 w-4 fill-current" />
                       <Star className="h-4 w-4 fill-current" />
