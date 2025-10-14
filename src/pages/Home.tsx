@@ -24,6 +24,10 @@ import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
 import cremicaImage from "@/assets/cremica.jpeg";
 import haldiramImage from "@/assets/haldiram.png";
+import mixerImage from "@/assets/mixer.jpeg";
+import GUJRATIDryFruitBoxImage from "@/assets/ngs-metal-box.jpeg";
+import miltonImage from "@/assets/milton.png";
+import thaliImage from "@/assets/ngs-thali,plate.jpeg";
 
 // ✅ Import your PDF file
 import realJuicePDF from "@/assets/NGS REAL JUICE.pdf";
@@ -32,6 +36,10 @@ import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
 import bikanoPDF from "@/assets/NGS BIKANO SWEETS.pdf";
 import cremicaPDF from "@/assets/NGS Cremica bisc.pdf";
 import haldiramPDF from "@/assets/NGS HALDIRAM .pdf";
+import mixerPDF from "@/assets/NGS GLEN mixer.pdf";
+import GUJRATIDryFruitBoxPDF from "@/assets/NGS GUJRATI BOX CATELOGUE.pdf";
+import miltonPDF from "@/assets/NGS MILTON pro.pdf";
+import thaliPDF from "@/assets/NGS THALIS , TRAYS,BOXES.pdf";
 
 const featuredProducts = [
   {
@@ -87,6 +95,45 @@ const featuredProducts = [
     image: haldiramImage,
     category: "Snacks & Sweets",
     path: haldiramPDF,
+    isPDF: true,
+  },
+  {
+    id: 7,
+    name: "Glen Kitchen Appliances Combo",
+    description: "A premium collection of Glen home appliances",
+    image: mixerImage,
+    category: "Home & Kitchen Appliances",
+    path: mixerPDF,
+    isPDF: true,
+  },
+  {
+    id: 8,
+    name: "NGS Dry Fruit Metal Box",
+    description:
+      "Elegant metal box filled with premium dry fruits — perfect for gifting and festive occasions.",
+    image: GUJRATIDryFruitBoxImage,
+    category: "Dry Fruits & Gifts",
+    path: GUJRATIDryFruitBoxPDF,
+    isPDF: true,
+  },
+  {
+    id: 9,
+    name: "Milton Kitchen Essentials",
+    description:
+      "A versatile range of Milton products including bottles, lunch boxes, flasks, and containers for everyday use.",
+    image: miltonImage,
+    category: "Home & Kitchen",
+    path: miltonPDF,
+    isPDF: true,
+  },
+  {
+    id: 10,
+    name: "NGS Kitchen Essentials",
+    description:
+      "Premium thalis, storage boxes, and serving trays — durable, stylish, and perfect for everyday use or festive occasions.",
+    image: thaliImage,
+    category: "Gifts and Storage",
+    path: thaliPDF,
     isPDF: true,
   },
 ];
