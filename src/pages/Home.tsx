@@ -27,7 +27,7 @@ import snackPackImage from "@/assets/snack-pack.jpg";
 import realJuicePDF from "@/assets/NGS REAL JUICEpdf.pdf";
 import snacksPDF from "@/assets/NGS Snack Factory.pdf";
 import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
-import bikanoPDF from "@/assetS/Hero-banner1.jpeg";
+import bikanoPDF from "@/assets/NGS BIKANO SWEETS.pdf";
 
 const featuredProducts = [
   {
