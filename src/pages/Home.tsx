@@ -24,7 +24,7 @@ import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
 
 // ✅ Import your PDF file
-import realJuicePDF from "@/assets/NGS REAL JUICEpdf.pdf";
+import realJuicePDF from "@/assets/NGS REAL JUICE.pdf";
 import snacksPDF from "@/assets/NGS Snack Factory.pdf";
 import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
 import bikanoPDF from "@/assets/NGS BIKANO SWEETS.pdf";
