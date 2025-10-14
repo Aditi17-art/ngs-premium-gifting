@@ -22,12 +22,13 @@ import dryFruitsImage from "@/assets/dry-fruits-hero.jpg";
 import corporateImage from "@/assets/bikano.jpeg";
 import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
-
+import cremicaImage from "@/assets/cremica.jpeg";
 // ✅ Import your PDF file
 import realJuicePDF from "@/assets/NGS REAL JUICE.pdf";
 import snacksPDF from "@/assets/NGS Snack Factory.pdf";
 import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
 import bikanoPDF from "@/assets/NGS BIKANO SWEETS.pdf";
+import cremicaPDF from "@/assets/NGS Cremica bisc.pdf";
 
 const featuredProducts = [
   {
@@ -64,6 +65,15 @@ const featuredProducts = [
     image: snackPackImage,
     category: "Snacks",
     path: snacksPDF,
+    isPDF: true,
+  },
+  {
+    id: 5,
+    name: "Cremica Biscuit & Cookies Assortment",
+    description: "A delightful combo of Cremica’s favorite biscuits",
+    image: cremicaImage,
+    category: "Snacks & Biscuits",
+    path: cremicaPDF,
     isPDF: true,
   },
 ];
