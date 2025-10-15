@@ -198,9 +198,6 @@ export default function Home() {
                   Start Pre-Booking <ArrowRight className="ml-2" />
                 </Link>
               </Button>
-              <Button variant="industrial" size="xl" asChild>
-                <Link to="/products/dry-fruits">View Products</Link>
-              </Button>
             </div>
           </div>
         </div>
