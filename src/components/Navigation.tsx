@@ -11,11 +11,31 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ngsLogo from "@/assets/ngs-logo.jpg";
 
+// ✅ Import your product PDFs
+import realJuicePDF from "@/assets/NGS REAL JUICE.pdf";
+import snacksPDF from "@/assets/NGS Snack Factory.pdf";
+import dryfruitPDF from "@/assets/NGS DRY FRUITS BOX.pdf";
+import bikanoPDF from "@/assets/NGS BIKANO SWEETS.pdf";
+import cremicaPDF from "@/assets/NGS Cremica bisc.pdf";
+import haldiramPDF from "@/assets/NGS HALDIRAM .pdf";
+import mixerPDF from "@/assets/NGS GLEN mixer.pdf";
+import GUJRATIDryFruitBoxPDF from "@/assets/NGS GUJRATI BOX CATELOGUE.pdf";
+import miltonPDF from "@/assets/NGS MILTON pro.pdf";
+import thaliPDF from "@/assets/NGS THALIS , TRAYS,BOXES.pdf";
+
+// ✅ Product list linked to PDF files
 const productCategories = [
-  { name: "Dry Fruits Boxes", path: "/products/dry-fruits" },
-  { name: "Real Juices Gift Packs", path: "/products/real-juices" },
-  { name: "Snack Factory Packs", path: "/products/snack-packs" },
-  { name: "Cremica Products", path: "/products/cremica" },
+  { name: "Premium Dry Fruits Box", path: dryfruitPDF },
+  { name: "Real Juices Gift Packs", path: realJuicePDF },
+  { name: "Snack Factory Packs", path: snacksPDF },
+  { name: "Cremica Products", path: cremicaPDF },
+   { name: "Haldiram Assorted Snacks Pack", path: haldiramPDF },
+  { name: "Glen Kitchen Appliances Combo", path: mixerPDF },
+  { name: "Bikano Snaks", path: bikanoPDF },
+  { name: "NGS Dry Fruit Metal Box", path: GUJRATIDryFruitBoxPDF },
+   { name: "Milton Kitchen Essentials", path: miltonPDF },
+  { name: "NGS Kitchen Essentials", path: thaliPDF },
+
 ];
 
 export const Navigation = () => {
@@ -91,11 +111,13 @@ export const Navigation = () => {
                 <DropdownMenuContent className="w-56 bg-background border-border shadow-lg">
                   {productCategories.map((category) => (
                     <DropdownMenuItem key={category.path}>
-                      <Link
-                        to={category.path}
+                      <a
+                        href={category.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full hover:text-primary transition-colors">
                         {category.name}
-                      </Link>
+                      </a>
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -160,13 +182,15 @@ export const Navigation = () => {
                   <div className="space-y-2">
                     <p className="text-lg font-medium text-primary">Products</p>
                     {productCategories.map((category) => (
-                      <Link
+                      <a
                         key={category.path}
-                        to={category.path}
+                        href={category.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block pl-4 text-base hover:text-primary transition-colors"
                         onClick={() => setIsOpen(false)}>
                         {category.name}
-                      </Link>
+                      </a>
                     ))}
                   </div>
 

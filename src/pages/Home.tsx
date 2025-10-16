@@ -62,7 +62,7 @@ const featuredProducts = [
   },
   {
     id: 3,
-    name: "Corporate Gift Sets",
+    name: "Bikano snaks",
     description: "Professional gifting solutions",
     image: corporateImage,
     category: "Sweets",
