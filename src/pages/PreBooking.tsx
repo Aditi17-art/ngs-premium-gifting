@@ -84,14 +84,14 @@ export default function PreBooking() {
         "service_u9v7q1i", // Replace with your EmailJS Service ID
         "template_hnsrr8m", // Replace with your EmailJS Template ID
         {
-          name: formData.name,
-          email: formData.email,
+          from_name: formData.name,
+          from_email: formData.email,
           phone: formData.phone,
           company: formData.company,
-          category: formData.category,
+          product_category: formData.category,
           quantity: formData.quantity,
           deliveryDate: formData.deliveryDate,
-          requirements: formData.specialRequirements,
+          message: formData.specialRequirements,
         },
         "jzV2-vkEoF2PDnRiy" // Replace with your EmailJS Public Key
       )

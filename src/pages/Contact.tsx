@@ -99,12 +99,12 @@ export default function Contact() {
         {
           to_name: "NGS Mart",
           from_name: formData.name,
+          from_email: formData.email,
           phone: formData.phone,
-          email: formData.email,
-          company: formData.company || "N/A",
-          category: formData.category || "N/A",
-          quantity: formData.quantity || "N/A",
-          specialRequirements: formData.specialRequirements || "N/A",
+          company: formData.company,
+          product_category: formData.category,
+          quantity: formData.quantity,
+          message: formData.specialRequirements,
         },
         "jzV2-vkEoF2PDnRiy" // Replace with your EmailJS Public Key
       );
