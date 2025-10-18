@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/Hero-banner1.jpeg";
 import dryFruitsImage from "@/assets/dry-fruits-hero.jpg";
 import corporateImage from "@/assets/bikano.jpeg";
+import corporateIMG from "@/assets/corporate-gifts.jpg";
 import realJuiceImage from "@/assets/real-juice.webp";
 import snackPackImage from "@/assets/snack-pack.jpg";
 import cremicaImage from "@/assets/cremica.jpeg";

@@ -94,8 +94,8 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        "service_dfrjgvs", // Replace with your EmailJS Service ID
-        "template_dvveowk", // Replace with your EmailJS Template ID
+        "service_u9v7q1i", // Replace with your EmailJS Service ID
+        "template_hnsrr8m", // Replace with your EmailJS Template ID
         {
           to_name: "NGS Mart",
           from_name: formData.name,
@@ -106,7 +106,7 @@ export default function Contact() {
           quantity: formData.quantity || "N/A",
           specialRequirements: formData.specialRequirements || "N/A",
         },
-        "PnKD0Lf4TomvWmp7_" // Replace with your EmailJS Public Key
+        "jzV2-vkEoF2PDnRiy" // Replace with your EmailJS Public Key
       );
 
       toast({

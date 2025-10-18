@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import corporateImage from "@/assets/bikano.jpeg";
+import corporateIMG from "@/assets/corporate-gifts.jpg";
 
 const values = [
   {
@@ -96,7 +96,7 @@ export default function About() {
 
             <div className="animate-scale-in">
               <img
-                src={corporateImage}
+                src={corporateIMG}
                 alt="NGS Mart Story"
                 className="w-full h-96 object-cover rounded-lg shadow-premium"
               />

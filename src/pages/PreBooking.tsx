@@ -81,8 +81,8 @@ export default function PreBooking() {
 
     emailjs
       .send(
-        "service_z6qf3of", // Replace with your EmailJS Service ID
-        "template_m436slh", // Replace with your EmailJS Template ID
+        "service_u9v7q1i", // Replace with your EmailJS Service ID
+        "template_hnsrr8m", // Replace with your EmailJS Template ID
         {
           name: formData.name,
           email: formData.email,
@@ -93,7 +93,7 @@ export default function PreBooking() {
           deliveryDate: formData.deliveryDate,
           requirements: formData.specialRequirements,
         },
-        "PnKD0Lf4TomvWmp7_" // Replace with your EmailJS Public Key
+        "jzV2-vkEoF2PDnRiy" // Replace with your EmailJS Public Key
       )
       .then(() => {
         toast({

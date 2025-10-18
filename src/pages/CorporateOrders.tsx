@@ -21,7 +21,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import corporateImage from "@/assets/bikano.jpeg";
+import corporateIMG from "@/assets/corporate-gifts.jpg";
 // ✅ Correct import for EmailJS
 import emailjs from "emailjs-com";
 
@@ -94,10 +94,10 @@ export default function CorporateOrders() {
     // ✅ Send form data via EmailJS
     emailjs
       .send(
-        "service_z6qf3of", // Replace with your EmailJS Service ID
-        "template_m436slh", // Replace with your EmailJS Template ID
+        "service_u9v7q1i", // Replace with your EmailJS Service ID
+        "template_hnsrr8m", // Replace with your EmailJS Template ID
         formData,
-        "PnKD0Lf4TomvWmp7_" // Replace with your EmailJS Public Key
+        "jzV2-vkEoF2PDnRiy" // Replace with your EmailJS Public Key
       )
       .then(() => {
         toast({
@@ -161,7 +161,7 @@ export default function CorporateOrders() {
             </div>
             <div className="animate-scale-in">
               <img
-                src={corporateImage}
+                src={corporateIMG}
                 alt="Corporate Gifts"
                 className="w-full h-96 object-cover rounded-lg shadow-premium"
               />
