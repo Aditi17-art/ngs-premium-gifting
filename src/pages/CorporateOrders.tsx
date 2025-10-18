@@ -1,13 +1,5 @@
 import { useState } from "react";
-import {
-  Building,
-  Users,
-  Gift,
-  Award,
-  Phone,
-  Mail,
-  ArrowRight,
-} from "lucide-react";
+import { Building, Users, Gift, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,9 +18,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import corporateImage from "@/assets/bikano.jpeg";
+// ✅ Correct import for EmailJS
 import emailjs from "emailjs-com";
 
 const corporateBenefits = [
@@ -57,38 +51,45 @@ const corporateBenefits = [
   },
 ];
 
-const orderTypes = [
-  "Employee Appreciation Gifts",
-  "Client & Partner Gifts",
-  "Festival Corporate Gifts",
-  "Conference & Event Gifts",
-  "New Year Corporate Hampers",
-  "Diwali Corporate Gifts",
-  "Custom Requirements",
+const productCategories = [
+  "Corporate Hampers",
+  "Festival Gifts",
+  "Client Gifts",
+  "Employee Rewards",
+  "Conference Packs",
+  "New Year Gifts",
 ];
 
 export default function CorporateOrders() {
   const [formData, setFormData] = useState({
-    companyName: "",
-    contactPerson: "",
-    designation: "",
-    email: "",
+    name: "",
     phone: "",
-    orderType: "",
+    email: "",
+    company: "",
+    category: "",
     quantity: "",
-    budget: "",
-    deliveryDate: "",
-    requirements: "",
+    specialRequirements: "",
+    agreeToTerms: false,
   });
 
   const { toast } = useToast();
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.agreeToTerms) {
+      toast({
+        title: "Agreement Required",
+        description:
+          "Please agree to the terms and conditions before submitting.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     // ✅ Send form data via EmailJS
     emailjs
@@ -100,23 +101,21 @@ export default function CorporateOrders() {
       )
       .then(() => {
         toast({
-          title: "Corporate Order Inquiry Submitted!",
+          title: "Pre-Booking Submitted!",
           description:
-            "Thank you for your interest. Our corporate team will contact you within 24 hours with a customized proposal.",
+            "Thank you for your interest. Our team will contact you within 24 hours to confirm your order.",
         });
 
-        // Reset form after success
+        // ✅ Reset form
         setFormData({
-          companyName: "",
-          contactPerson: "",
-          designation: "",
-          email: "",
+          name: "",
           phone: "",
-          orderType: "",
+          email: "",
+          company: "",
+          category: "",
           quantity: "",
-          budget: "",
-          deliveryDate: "",
-          requirements: "",
+          specialRequirements: "",
+          agreeToTerms: false,
         });
       })
       .catch((error) => {
@@ -149,12 +148,12 @@ export default function CorporateOrders() {
                 gift packages. Perfect for employees, clients, and partners.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="secondary" size="xl">
+                <Button variant="secondary" size="lg">
                   Get Quote <ArrowRight className="ml-2" />
                 </Button>
                 <Button
                   variant="outline"
-                  size="xl"
+                  size="lg"
                   className="border-white text-white hover:bg-white hover:text-primary">
                   View Catalog
                 </Button>
@@ -180,7 +179,7 @@ export default function CorporateOrders() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               We understand the importance of representing your brand with
-              quality and elegance
+              quality and elegance.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -208,63 +207,38 @@ export default function CorporateOrders() {
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="py-20">
+      {/* Updated Form Section */}
+      <section className="py-10 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <Card className="shadow-premium border-0">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl text-industrial">
-                  Request Corporate Quote
+                  Submit Your Pre-Booking
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Fill out the form below and our corporate team will prepare a
-                  customized proposal for you
+                  Fill out the form below and we'll contact you within 24 hours
+                  to confirm your order.
                 </CardDescription>
               </CardHeader>
+
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Company Info */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="companyName">Company Name *</Label>
+                      <Label htmlFor="name">Full Name *</Label>
                       <Input
-                        id="companyName"
+                        id="name"
                         type="text"
                         required
-                        value={formData.companyName}
+                        value={formData.name}
                         onChange={(e) =>
-                          handleInputChange("companyName", e.target.value)
+                          handleInputChange("name", e.target.value)
                         }
+                        className="mt-1"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="contactPerson">Contact Person *</Label>
-                      <Input
-                        id="contactPerson"
-                        type="text"
-                        required
-                        value={formData.contactPerson}
-                        onChange={(e) =>
-                          handleInputChange("contactPerson", e.target.value)
-                        }
-                      />
-                    </div>
-                  </div>
 
-                  {/* Designation & Phone */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="designation">Designation</Label>
-                      <Input
-                        id="designation"
-                        type="text"
-                        value={formData.designation}
-                        onChange={(e) =>
-                          handleInputChange("designation", e.target.value)
-                        }
-                      />
-                    </div>
                     <div>
                       <Label htmlFor="phone">Phone Number *</Label>
                       <Input
@@ -275,11 +249,11 @@ export default function CorporateOrders() {
                         onChange={(e) =>
                           handleInputChange("phone", e.target.value)
                         }
+                        className="mt-1"
                       />
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div>
                     <Label htmlFor="email">Email Address *</Label>
                     <Input
@@ -290,29 +264,45 @@ export default function CorporateOrders() {
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
                       }
+                      className="mt-1"
                     />
                   </div>
 
-                  {/* Order Details */}
+                  <div>
+                    <Label htmlFor="company">Company Name (Optional)</Label>
+                    <Input
+                      id="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) =>
+                        handleInputChange("company", e.target.value)
+                      }
+                      placeholder="For corporate orders"
+                      className="mt-1"
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="orderType">Order Type *</Label>
+                      <Label htmlFor="category">Product Category *</Label>
                       <Select
+                        value={formData.category}
                         onValueChange={(value) =>
-                          handleInputChange("orderType", value)
+                          handleInputChange("category", value)
                         }>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select order type" />
+                        <SelectTrigger className="mt-1">
+                          <SelectValue placeholder="Select category" />
                         </SelectTrigger>
                         <SelectContent>
-                          {orderTypes.map((type) => (
-                            <SelectItem key={type} value={type}>
-                              {type}
+                          {productCategories.map((category) => (
+                            <SelectItem key={category} value={category}>
+                              {category}
                             </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
                     </div>
+
                     <div>
                       <Label htmlFor="quantity">Approximate Quantity *</Label>
                       <Input
@@ -323,67 +313,36 @@ export default function CorporateOrders() {
                         onChange={(e) =>
                           handleInputChange("quantity", e.target.value)
                         }
-                        placeholder="e.g., 200 units"
+                        placeholder="e.g., 50 boxes"
+                        className="mt-1"
                       />
                     </div>
                   </div>
 
-                  {/* Budget & Date */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="budget">Budget Range</Label>
-                      <Select
-                        onValueChange={(value) =>
-                          handleInputChange("budget", value)
-                        }>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select budget range" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="under-50k">
-                            Under ₹50,000
-                          </SelectItem>
-                          <SelectItem value="50k-1l">
-                            ₹50,000 - ₹1,00,000
-                          </SelectItem>
-                          <SelectItem value="1l-2l">
-                            ₹1,00,000 - ₹2,00,000
-                          </SelectItem>
-                          <SelectItem value="2l-5l">
-                            ₹2,00,000 - ₹5,00,000
-                          </SelectItem>
-                          <SelectItem value="above-5l">
-                            Above ₹5,00,000
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="deliveryDate">
-                        Required Delivery Date
-                      </Label>
-                      <Input
-                        id="deliveryDate"
-                        type="date"
-                        value={formData.deliveryDate}
-                        onChange={(e) =>
-                          handleInputChange("deliveryDate", e.target.value)
-                        }
-                      />
-                    </div>
-                  </div>
-
-                  {/* Requirements */}
                   <div>
                     <Label htmlFor="requirements">Special Requirements</Label>
                     <Textarea
                       id="requirements"
-                      value={formData.requirements}
+                      value={formData.specialRequirements}
                       onChange={(e) =>
-                        handleInputChange("requirements", e.target.value)
+                        handleInputChange("specialRequirements", e.target.value)
                       }
-                      placeholder="Please describe any specific requirements, customizations, branding needs, etc."
+                      placeholder="Any specific requirements, customizations, or preferences..."
+                      className="mt-1 min-h-[100px]"
                     />
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="terms"
+                      checked={formData.agreeToTerms}
+                      onCheckedChange={(checked) =>
+                        handleInputChange("agreeToTerms", checked === true)
+                      }
+                    />
+                    <Label htmlFor="terms" className="text-sm">
+                      I agree to the terms and conditions and privacy policy *
+                    </Label>
                   </div>
 
                   <Button
@@ -391,7 +350,7 @@ export default function CorporateOrders() {
                     variant="premium"
                     size="lg"
                     className="w-full">
-                    Submit Corporate Inquiry <ArrowRight className="ml-2" />
+                    Submit Pre-Booking Request <ArrowRight className="ml-2" />
                   </Button>
                 </form>
               </CardContent>

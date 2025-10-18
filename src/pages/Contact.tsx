@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "emailjs-com";
 
@@ -51,87 +52,83 @@ const contactInfo = [
   },
 ];
 
-// Inquiry Types
-const inquiryTypes = [
-  "General Inquiry",
-  "Product Information",
-  "Bulk Orders",
-  "Corporate Gifting",
-  "Pre-Booking",
-  "Complaint/Feedback",
-  "Partnership Opportunity",
-];
-
-// Product Interest Options
-const productInterests = [
+// Product categories for Select dropdown
+const productCategories = [
   "Cakes & Chocolates",
   "Flowers & Bouquets",
   "Personalized Gifts",
   "Festival Hampers",
   "Premium Accessories",
+  "Corporate Gifts",
   "Other",
 ];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
+    email: "",
     company: "",
-    inquiryType: "",
-    productInterest: "",
-    subject: "",
-    message: "",
+    category: "",
+    quantity: "",
+    specialRequirements: "",
+    agreeToTerms: false,
   });
 
   const { toast } = useToast();
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.agreeToTerms) {
+      toast({
+        title: "Please agree to the terms and conditions.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
       await emailjs.send(
-        "service_dfrjgvs", // ✅ Replace with your EmailJS Service ID
-        "template_dvveowk", // ✅ Replace with your EmailJS Template ID
+        "service_dfrjgvs", // Replace with your EmailJS Service ID
+        "template_dvveowk", // Replace with your EmailJS Template ID
         {
           to_name: "NGS Mart",
           from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone.trim() || "not filled",
-          company: formData.company.trim() || "not filled",
-          inquiryType: formData.inquiryType || "not filled",
-          productInterest: formData.productInterest || "not filled",
-          subject: formData.subject.trim() || "not filled",
-          message: formData.message.trim() || "not filled",
+          phone: formData.phone,
+          email: formData.email,
+          company: formData.company || "N/A",
+          category: formData.category || "N/A",
+          quantity: formData.quantity || "N/A",
+          specialRequirements: formData.specialRequirements || "N/A",
         },
-        "PnKD0Lf4TomvWmp7_" // ✅ Replace with your EmailJS Public Key
+        "PnKD0Lf4TomvWmp7_" // Replace with your EmailJS Public Key
       );
 
       toast({
-        title: "Message Sent Successfully!",
+        title: "Pre-Booking Submitted!",
         description:
-          "Thank you for contacting us. We'll get back to you within 24 hours.",
+          "Thank you for your interest. Our team will contact you within 24 hours to confirm your order.",
       });
 
-      // Reset form
       setFormData({
         name: "",
-        email: "",
         phone: "",
+        email: "",
         company: "",
-        inquiryType: "",
-        productInterest: "",
-        subject: "",
-        message: "",
+        category: "",
+        quantity: "",
+        specialRequirements: "",
+        agreeToTerms: false,
       });
     } catch (error) {
       console.error("EmailJS error:", error);
       toast({
-        title: "Error",
+        title: "Submission Failed",
         description: "Something went wrong. Please try again later.",
         variant: "destructive",
       });
@@ -147,8 +144,8 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-up">
-            We're here to help with all your gifting needs. Reach out to us for
-            personalized assistance and premium customer service.
+            We're here to help with all your gifting and pre-booking needs.
+            Reach out to us for personalized assistance and premium service.
           </p>
         </div>
       </section>
@@ -176,141 +173,154 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-20">
+      {/* Pre-Booking Form Section */}
+      <section className="py-10 bg-muted/30">
         <div className="container mx-auto px-4">
-          <Card className="shadow-premium border-0">
-            <CardHeader>
-              <CardTitle className="text-3xl text-industrial">
-                Send Us a Message
-              </CardTitle>
-              <CardDescription className="text-lg">
-                Fill out the form and we'll respond within 24 hours
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name */}
-                <div>
-                  <Label>Name</Label>
-                  <Input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
-                    required
-                  />
-                </div>
+          <div className="max-w-2xl mx-auto">
+            <Card className="shadow-premium border-0">
+              <CardHeader className="text-center">
+                <CardTitle className="text-3xl text-industrial">
+                  Submit Your Pre-Booking
+                </CardTitle>
+                <CardDescription className="text-lg">
+                  Fill out the form below and we'll contact you within 24 hours
+                  to confirm your order.
+                </CardDescription>
+              </CardHeader>
 
-                {/* Email */}
-                <div>
-                  <Label>Email</Label>
-                  <Input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    required
-                  />
-                </div>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
+                        className="mt-1"
+                      />
+                    </div>
 
-                {/* Phone */}
-                <div>
-                  <Label>Phone</Label>
-                  <Input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange("phone", e.target.value)}
-                  />
-                </div>
+                    <div>
+                      <Label htmlFor="phone">Phone Number *</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) =>
+                          handleInputChange("phone", e.target.value)
+                        }
+                        className="mt-1"
+                      />
+                    </div>
+                  </div>
 
-                {/* Company */}
-                <div>
-                  <Label>Company</Label>
-                  <Input
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) =>
-                      handleInputChange("company", e.target.value)
-                    }
-                  />
-                </div>
+                  <div>
+                    <Label htmlFor="email">Email Address *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) =>
+                        handleInputChange("email", e.target.value)
+                      }
+                      className="mt-1"
+                    />
+                  </div>
 
-                {/* Inquiry Type */}
-                <div>
-                  <Label>Inquiry Type</Label>
-                  <Select
-                    onValueChange={(val) =>
-                      handleInputChange("inquiryType", val)
-                    }
-                    value={formData.inquiryType}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select an option" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {inquiryTypes.map((type, i) => (
-                        <SelectItem key={i} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                  <div>
+                    <Label htmlFor="company">Company Name (Optional)</Label>
+                    <Input
+                      id="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) =>
+                        handleInputChange("company", e.target.value)
+                      }
+                      placeholder="For corporate orders"
+                      className="mt-1"
+                    />
+                  </div>
 
-                {/* Product Interest */}
-                <div>
-                  <Label>Product Interest</Label>
-                  <Select
-                    onValueChange={(val) =>
-                      handleInputChange("productInterest", val)
-                    }
-                    value={formData.productInterest}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a product" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {productInterests.map((item, i) => (
-                        <SelectItem key={i} value={item}>
-                          {item}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="category">Product Category *</Label>
+                      <Select
+                        onValueChange={(value) =>
+                          handleInputChange("category", value)
+                        }>
+                        <SelectTrigger className="mt-1">
+                          <SelectValue placeholder="Select category" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {productCategories.map((category) => (
+                            <SelectItem key={category} value={category}>
+                              {category}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                {/* Subject */}
-                <div>
-                  <Label>Subject</Label>
-                  <Input
-                    type="text"
-                    value={formData.subject}
-                    onChange={(e) =>
-                      handleInputChange("subject", e.target.value)
-                    }
-                  />
-                </div>
+                    <div>
+                      <Label htmlFor="quantity">Approximate Quantity *</Label>
+                      <Input
+                        id="quantity"
+                        type="text"
+                        required
+                        value={formData.quantity}
+                        onChange={(e) =>
+                          handleInputChange("quantity", e.target.value)
+                        }
+                        placeholder="e.g., 50 boxes"
+                        className="mt-1"
+                      />
+                    </div>
+                  </div>
 
-                {/* Message */}
-                <div>
-                  <Label>Message</Label>
-                  <Textarea
-                    value={formData.message}
-                    onChange={(e) =>
-                      handleInputChange("message", e.target.value)
-                    }
-                    required
-                  />
-                </div>
+                  <div>
+                    <Label htmlFor="requirements">Special Requirements</Label>
+                    <Textarea
+                      id="requirements"
+                      value={formData.specialRequirements}
+                      onChange={(e) =>
+                        handleInputChange("specialRequirements", e.target.value)
+                      }
+                      placeholder="Any specific requirements, customizations, or preferences..."
+                      className="mt-1 min-h-[100px]"
+                    />
+                  </div>
 
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  variant="premium"
-                  size="lg"
-                  className="w-full">
-                  Send Message <Send className="ml-2 h-4 w-4" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="terms"
+                      checked={formData.agreeToTerms}
+                      onCheckedChange={(checked) =>
+                        handleInputChange("agreeToTerms", checked === true)
+                      }
+                    />
+                    <Label htmlFor="terms" className="text-sm">
+                      I agree to the terms and conditions and privacy policy *
+                    </Label>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="premium"
+                    size="lg"
+                    className="w-full">
+                    Submit Pre-Booking Request <ArrowRight className="ml-2" />
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
     </div>

@@ -29,7 +29,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "emailjs-com"; // ✅ Import EmailJS
+import emailjs from "emailjs-com";
 
 const preBookingBenefits = [
   "Guaranteed product availability during festival season",
@@ -63,11 +63,11 @@ export default function PreBooking() {
 
   const { toast } = useToast();
 
-  const handleInputChange = (field: string, value: string | boolean) => {
+  const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.agreeToTerms) {
@@ -79,11 +79,10 @@ export default function PreBooking() {
       return;
     }
 
-    // ✅ Send Email via EmailJS
     emailjs
       .send(
-        "service_z6qf3of", // 🔴 Replace with EmailJS Service ID
-        "template_m436slh", // 🔴 Replace with EmailJS Template ID
+        "service_z6qf3of", // Replace with your EmailJS Service ID
+        "template_m436slh", // Replace with your EmailJS Template ID
         {
           name: formData.name,
           email: formData.email,
@@ -94,7 +93,7 @@ export default function PreBooking() {
           deliveryDate: formData.deliveryDate,
           requirements: formData.specialRequirements,
         },
-        "PnKD0Lf4TomvWmp7_" // 🔴 Replace with EmailJS Public Key
+        "PnKD0Lf4TomvWmp7_" // Replace with your EmailJS Public Key
       )
       .then(() => {
         toast({
@@ -102,8 +101,6 @@ export default function PreBooking() {
           description:
             "Thank you for your pre-booking. We'll contact you within 24 hours to confirm your order.",
         });
-
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -127,9 +124,9 @@ export default function PreBooking() {
   };
 
   return (
-    <div className="min-h-screen pt-24">
+    <div className="min-h-screen pt-10">
       {/* Pre-Booking Form */}
-      <section className="py-12 bg-muted/30">
+      <section className="py-10 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Card className="shadow-premium border-0">
@@ -240,23 +237,6 @@ export default function PreBooking() {
                   </div>
 
                   <div>
-                    <Label htmlFor="deliveryDate">
-                      Preferred Delivery Date
-                    </Label>
-                    <Input
-                      id="deliveryDate"
-                      type="date"
-                      value={formData.deliveryDate}
-                      onChange={(e) =>
-                        handleInputChange("deliveryDate", e.target.value)
-                      }
-                      min="2025-11-06"
-                      max="2025-11-15"
-                      className="mt-1"
-                    />
-                  </div>
-
-                  <div>
                     <Label htmlFor="requirements">Special Requirements</Label>
                     <Textarea
                       id="requirements"
@@ -274,7 +254,7 @@ export default function PreBooking() {
                       id="terms"
                       checked={formData.agreeToTerms}
                       onCheckedChange={(checked) =>
-                        handleInputChange("agreeToTerms", checked as boolean)
+                        handleInputChange("agreeToTerms", checked)
                       }
                     />
                     <Label htmlFor="terms" className="text-sm">
@@ -410,7 +390,7 @@ export default function PreBooking() {
         </div>
       </section>
 
-      {/* Contact Information */}
+      {/* Contact Info */}
       <section className="py-16 bg-gradient-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
