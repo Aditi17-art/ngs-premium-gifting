@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ngsLogo from "@/assets/ngs-logo.jpg";
 
@@ -18,20 +25,32 @@ export const Footer = () => {
               />
               <div>
                 <h3 className="text-xl font-bold">NGS MART</h3>
-                <p className="text-sm text-primary-foreground/80">Pick n Pay. Inspired by You</p>
+                <p className="text-sm text-primary-foreground/80">
+                  Pick n Pay. Inspired by You
+                </p>
               </div>
             </div>
             <p className="text-primary-foreground/80 text-sm">
-              Premium Gift-Packs & Festive Corporate Gifting solutions for all your celebration needs.
+              Premium Gift-Packs & Festive Corporate Gifting solutions for all
+              your celebration needs.
             </p>
             <div className="flex space-x-3">
-              <Button variant="ghost" size="icon" className="hover:bg-primary-light">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-primary-light">
                 <Facebook className="h-4 w-4" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:bg-primary-light">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-primary-light">
                 <Instagram className="h-4 w-4" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:bg-primary-light">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-primary-light">
                 <Twitter className="h-4 w-4" />
               </Button>
             </div>
@@ -41,16 +60,24 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Quick Links</h4>
             <div className="space-y-2">
-              <Link to="/" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Home
               </Link>
-              <Link to="/about" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/about"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 About Us
               </Link>
-              <Link to="/corporate-orders" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/corporate-orders"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Corporate Orders
               </Link>
-              <Link to="/pre-booking" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/pre-booking"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Pre-Booking
               </Link>
             </div>
@@ -60,16 +87,24 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Products</h4>
             <div className="space-y-2">
-              <Link to="/products/dry-fruits" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/products/dry-fruits"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Dry Fruits Boxes
               </Link>
-              <Link to="/products/real-juices" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/products/real-juices"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Real Juices Gift Packs
               </Link>
-              <Link to="/products/snack-packs" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/products/snack-packs"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Snack Factory Packs
               </Link>
-              <Link to="/products/cremica" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/products/cremica"
+                className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Cremica Products
               </Link>
             </div>
@@ -95,30 +130,49 @@ export const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-secondary" />
-                <p className="text-sm text-primary-foreground/80">Ngshelpdeskv9@gmail.com</p>
+                <p className="text-sm text-primary-foreground/80">
+                  Ngshelpdeskv9@gmail.com
+                </p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Divider and Policies */}
         <div className="border-t border-primary-light mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-primary-foreground/80">
               © 2025 NGS Mart. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
-              <Link to="/terms" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/terms"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Terms & Conditions
               </Link>
-              <Link to="/privacy" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/privacy"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/returns" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link
+                to="/returns"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Return/Refund Policy
               </Link>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Bottom Footer Text */}
+      <div className="bg-primary-dark text-center py-3 border-t border-primary-light">
+        <p className="text-xs text-primary-foreground/70">
+          Design & Developed by{" "}
+          <span className="font-semibold text-primary-foreground">
+            Aditi Dhariwal
+          </span>
+        </p>
       </div>
     </footer>
   );

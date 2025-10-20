@@ -58,8 +58,8 @@ const featuredProducts = [
     description: "Family pack with assorted flavors",
     image: realJuiceImage,
     category: "Juices",
-    path: realJuicePDF, // PDF path here
-    isPDF: true, // Flag to handle PDF opening
+    path: realJuicePDF,
+    isPDF: true,
   },
   {
     id: 3,
@@ -166,7 +166,7 @@ const whyChooseUs = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div
@@ -253,7 +253,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* ✅ Open PDF directly if it's a PDF product */}
                   {product.isPDF ? (
                     <Button
                       variant="hero"
